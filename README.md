@@ -1,7 +1,7 @@
 # JVim
 
 JVim is a simple text editor designed to be used from the terminal, created using Java, JNA, and Termios. It offers basic functionalities for both writing and reading text.
-Contribution to https://www.youtube.com/@MarcoCodes which inspired me to make this project.
+Contribution to https://www.youtube.com/@MarcoCodes who inspired me to make this project.
 
 ⚠️ This is a side project for learning & fun purposes
 
