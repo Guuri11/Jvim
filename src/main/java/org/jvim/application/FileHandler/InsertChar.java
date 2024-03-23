@@ -1,5 +1,6 @@
 package org.jvim.application.FileHandler;
 
+import org.jvim.application.Editor.EditorService;
 import org.jvim.domain.FileHandler.FileHandler;
 
 import static org.jvim.domain.Cursor.Cursor.cursorX;
@@ -7,12 +8,21 @@ import static org.jvim.domain.Cursor.Cursor.cursorY;
 
 public class InsertChar {
     public static void insert(int c) {
+        if (FileHandler.renamingTmpFile) {
+            insertCharAtTmpFile((char) c);
+            return;
+        }
         if (cursorY == FileHandler.content.size()) {
             // append row
             insertRowAt(FileHandler.content.size(), "");
         }
         insertCharIntoRow(cursorY, cursorX, c);
         cursorX++;
+    }
+
+    private static void insertCharAtTmpFile(char c) {
+        FileHandler.fileNameForTmpFile += c;
+        EditorService.setStatusMessage("File name: " + FileHandler.fileNameForTmpFile);
     }
 
     private static void insertRowAt(int at, String rowContent) {

@@ -10,7 +10,6 @@ import org.jvim.application.Terminal.DisableRaw;
 import org.jvim.domain.Editor.Editor;
 import org.jvim.domain.FileHandler.FileHandler;
 import org.jvim.domain.Keyboard.Keyboard;
-import org.jvim.domain.SearchEngine.SearchEngine;
 
 import java.util.List;
 
@@ -87,7 +86,6 @@ public class EditorService {
                 if (lengthToDraw > 0) {
                     builder.append(line, offsetX, offsetX + lengthToDraw);
                 }
-
 
             }
             builder.append(Keyboard.ESCAPE_ASCII_CODE + "[K\r\n");

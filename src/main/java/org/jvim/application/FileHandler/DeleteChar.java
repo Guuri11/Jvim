@@ -1,5 +1,6 @@
 package org.jvim.application.FileHandler;
 
+import org.jvim.application.Editor.EditorService;
 import org.jvim.domain.FileHandler.FileHandler;
 
 import static org.jvim.domain.Cursor.Cursor.cursorX;
@@ -15,6 +16,10 @@ public class DeleteChar {
             return;
         }
         if (cursorX > 0 ) {
+            if (FileHandler.renamingTmpFile) {
+                deleteCharFromTmpFile();
+                return;
+            }
             deleteCharFromRow(cursorY, cursorX - 1);
             cursorX--;
         } else {
@@ -23,6 +28,17 @@ public class DeleteChar {
             deleteRow(cursorY);
             cursorY--;
         }
+    }
+
+    private static void deleteCharFromTmpFile() {
+        FileHandler.fileNameForTmpFile = removeLastChar(FileHandler.fileNameForTmpFile);
+        EditorService.setStatusMessage("File name: " + FileHandler.fileNameForTmpFile);
+    }
+
+    private static String removeLastChar(String s) {
+        return (s == null || s.isEmpty())
+                ? null
+                : (s.substring(0, s.length() - 1));
     }
 
     private static void appendStringToRow(int at
