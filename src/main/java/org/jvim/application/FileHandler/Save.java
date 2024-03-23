@@ -28,7 +28,6 @@ public class Save {
             Files.write(FileHandler.currentFile, FileHandler.content);
             EditorService.setStatusMessage("Successfully saved file");
         } catch (IOException e) {
-            e.printStackTrace();
             EditorService.setStatusMessage("There was an error saving your file %s".formatted(e.getMessage()));
         }
     }
@@ -42,7 +41,6 @@ public class Save {
             FileHandler.currentFile = Path.of(System.getProperty("user.dir") + "/" + FileHandler.fileNameForTmpFile);
             FileHandler.renamingTmpFile = false;
         } catch (IOException e) {
-            e.printStackTrace();
             EditorService.setStatusMessage("There was an error saving your file %s".formatted(e.getMessage()));
         }
     }
