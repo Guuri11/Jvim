@@ -42,7 +42,3 @@ Contributions are welcome! If you have any ideas for improvements or find any is
 ## Acknowledgments
 
 JVim utilizes Java, JNA, and Termios libraries.
-
----
-
-Feel free to customize this README to fit your specific repository and project details. Happy coding!
